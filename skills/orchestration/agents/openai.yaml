@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agent Fleet Orchestration"
+  short_description: "默认 solo，按任务风险与收益选择性启用 subagent"
+  default_prompt: "默认 solo；只有风险与并行收益明确时才启用 subagent，需要启用时输出 SELECTIVE ROUTE。"

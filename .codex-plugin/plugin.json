@@ -1,0 +1,38 @@
+{
+  "name": "agent-fleet",
+  "version": "0.1.0",
+  "description": "个人化、风险门控的 Codex subagent 舰队：solo 默认，仅在任务确有收益时选择性派发。",
+  "author": {
+    "name": "zqxsober"
+  },
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "subagents",
+    "orchestration",
+    "java",
+    "mybatis",
+    "database",
+    "macos",
+    "git"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Agent Fleet",
+    "shortDescription": "默认单代理，按风险与收益选择性启用 subagent。",
+    "longDescription": "Agent Fleet 为 Java/MyBatis、数据库排查、macOS 和 Git 工作流提供一组可选 native subagent 角色。角色安装后不会自动运行；每个任务由主会话先声明 solo、delegate、evidence、audit 或 full 路线，默认保持 solo，主会话负责完整 diff、验证和最终验收。",
+    "developerName": "zqxsober",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "默认 solo；只有风险与并行收益明确时才启用 subagent，需要启用时输出 SELECTIVE ROUTE。",
+      "仅在风险与并行收益明确时派发一个角色，并由主会话验收。",
+      "按 Java/MyBatis、数据库、macOS、Git 安全边界完成并验证。"
+    ],
+    "composerIcon": "./assets/icon-fleet.png",
+    "logo": "./assets/icon-fleet.png"
+  }
+}
