@@ -1,8 +1,10 @@
 # Agent Fleet
 
-Agent Fleet 是一个面向个人开发工作流的 Codex native subagent 角色池，参考
-[Sol Advisor](https://github.com/DannyMac180/sol-advisor) 的风险门控思想，但把重点放在
-Java/MyBatis、UAMA 类后端、数据库证据、macOS 构建和 Git 工作树纪律上。
+[English](README.en.md) | 中文
+
+Agent Fleet 是一个面向 Codex 的 native subagent 角色池，参考
+[Sol Advisor](https://github.com/DannyMac180/sol-advisor) 的风险门控思想，重点覆盖
+Java/MyBatis 后端、数据库证据、macOS 构建和 Git 工作树纪律。
 
 最重要的行为约束：**安装角色不等于启动角色，角色池也不等于每个会话都开 subagent。**
 每个任务都从 `solo` 开始；只有当主会话判断并行执行或独立审查能带来明确收益时，才选择
@@ -10,10 +12,10 @@ Java/MyBatis、UAMA 类后端、数据库证据、macOS 构建和 Git 工作树�
 
 ## 安装
 
-本插件的 marketplace 在当前工作区：
+将下面命令中的 `/path/to/codex-marketplace` 替换为本地 marketplace 目录：
 
 ```sh
-codex plugin marketplace add /Users/zqxsober/Documents/zqxsober
+codex plugin marketplace add /path/to/codex-marketplace
 codex plugin add agent-fleet@personal
 ```
 
@@ -66,7 +68,7 @@ expected_gain: 不启用 subagent
 `audit/full` 使用只读最终审查角色。任何角色不可用、模型/权限/隔离信息冲突或不可观测时，
 主会话必须停止该 lane，不能静默替换模型或角色。
 
-## 个人工作流边界
+## 工作流边界
 
 - 先读项目 `AGENTS.md`、README、模块构建规则和现有 diff，再编写 worker packet。
 - Java/MyBatis 任务沿 controller → service → mapper/XML → SQL → 配置/缓存/权限/序列化
@@ -80,9 +82,11 @@ expected_gain: 不启用 subagent
 
 ## 本地验证
 
+在插件仓库根目录执行：
+
 ```sh
-sh plugins/agent-fleet/scripts/verify.sh
-python3 /Users/zqxsober/.codex/skills/.system/plugin-creator/scripts/validate_plugin.py plugins/agent-fleet
+sh scripts/verify.sh
+python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/plugin-creator/scripts/validate_plugin.py" .
 ```
 
 更新已安装插件时，使用 plugin-creator 的 cachebuster/reinstall 流程，并在新 task 验证；
